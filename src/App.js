@@ -1,14 +1,24 @@
+import useState from 'react';
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
+
+  const [count, setCount]= useState(0)
+  const style = {backgroundColor: 'blue'}
+  const handleConsole = () =>{
+    console.log ('soy evento')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App" style={style} onClick={handleConsole}>
+        
+        <NavBar/>
+        
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -17,7 +27,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      
     </div>
   );
 }
