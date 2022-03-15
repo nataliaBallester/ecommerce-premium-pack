@@ -1,4 +1,4 @@
-import useState from 'react';
+//import {useState } from 'react';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './App.css';
@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 
 function App() {
 
-  const [count, setCount]= useState(0)
+  //const [count, setCount]= useState(0)
   const style = {backgroundColor: 'blue'}
   const handleConsole = () =>{
     console.log ('soy evento')
