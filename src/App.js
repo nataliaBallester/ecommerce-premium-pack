@@ -2,6 +2,7 @@ import useState from 'react';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './App.css';
+import Titulo from './components/Titulo/Titulo';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <div className="App" style={style} onClick={handleConsole}>
         
         <NavBar/>
-        
+        <Titulo/>
         <img src={logo} className="App-logo" alt="logo" />
         
         <a
