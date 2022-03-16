@@ -1,34 +1,13 @@
-//import {useState } from 'react';
-import logo from './logo.svg';
+import RoutesApp from "./container/RoutesApp";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import './App.css';
-import Titulo from './components/Titulo/Titulo';
-import NavBar from './components/NavBar/NavBar';
+import './App.css'
 
 function App() {
 
-  //const [count, setCount]= useState(0)
-  const style = {backgroundColor: 'blue'}
-  const handleConsole = () =>{
-    console.log ('soy evento')
-  }
-
+  
   return (
-    <div className="App" style={style} onClick={handleConsole}>
-        
-        <NavBar/>
-        <Titulo/>
-        
-        
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      
+    <div className="App">
+      <RoutesApp/>
     </div>
   );
 }

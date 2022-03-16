@@ -3,34 +3,41 @@ import  Container  from 'react-bootstrap/Container'
 import  Nav  from 'react-bootstrap/Nav'
 import  NavDropdown  from 'react-bootstrap/NavDropdown'
 
-
-function NavBar(){
+function NavBar({children}){
+    console.log (children)
     return(
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        < >
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand href="#home">PREMIUM PACK</Navbar.Brand>
+                <Navbar.Brand href="#home">
+                    {/*  Aca va el logo de la marca pero no me lo toma
+                <img src='./marca.svg' width="50" height="30" className="d-inline-block align-top" />
+                */}
+                    PREMIUM PACK
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Vasos</Nav.Link>
-                        <Nav.Link href="#pricing">Cajas</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <Nav.Link href="#pricing">Platos</Nav.Link>
+                        <NavDropdown title="Vasos" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Linea Corazon</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">Linea Cosmo</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Linea Kraft</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
+                        <Nav.Link eventKey={2} href="#carrito">
+                        <img src='https://w7.pngwing.com/pngs/225/984/png-transparent-computer-icons-shopping-cart-encapsulated-postscript-shopping-cart-angle-black-shopping.png' width="50" height="30" className="d-inline-block align-top" />
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+        { children }
+        </>
+        
     )
 }
 
