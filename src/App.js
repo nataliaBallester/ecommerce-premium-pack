@@ -18,7 +18,7 @@ function App() {
         
         <NavBar/>
         <Titulo/>
-        <img src={logo} className="App-logo" alt="logo" />
+        
         
         <a
           className="App-link"
