@@ -2,6 +2,7 @@ import  Navbar  from 'react-bootstrap/Navbar'
 import  Container  from 'react-bootstrap/Container'
 import  Nav  from 'react-bootstrap/Nav'
 import  NavDropdown  from 'react-bootstrap/NavDropdown'
+import CartWidget from '../CartWidget/CartWidget'
 
 function NavBar({children}){
     console.log (children)
@@ -29,7 +30,8 @@ function NavBar({children}){
                     </Nav>
                     <Nav>
                         <Nav.Link eventKey={2} href="#carrito">
-                        <img src='https://w7.pngwing.com/pngs/225/984/png-transparent-computer-icons-shopping-cart-encapsulated-postscript-shopping-cart-angle-black-shopping.png' width="50" height="30" className="d-inline-block align-top" />
+                            <CartWidget/>
+                        
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

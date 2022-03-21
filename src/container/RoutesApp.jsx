@@ -3,6 +3,7 @@ import NavBar from '../components//NavBar/NavBar'
 import Titulo from '../components/Titulo/Titulo'
 //import Input from '../components/Input/Input'
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer'
+import ItemCount from '../components/ItemCount/ItemCount'
 //import useState from 'react';
 
 
@@ -29,6 +30,7 @@ function RoutesApp(){
       <ItemListContainer greeting='Hola soy ItemListContainer'>
         <Titulo titulo={titulo} subTit={subTit}/>
       </ItemListContainer>
+      <ItemCount/>
 
       
     </>
