@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 
-//import './styles/ItemCount.css';
-
 const ItemCount = () => {
     //Inicializa el contador 1
     const inicia = 1; 

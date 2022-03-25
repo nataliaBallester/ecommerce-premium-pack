@@ -4,17 +4,15 @@ import  Nav  from 'react-bootstrap/Nav'
 import  NavDropdown  from 'react-bootstrap/NavDropdown'
 import CartWidget from '../CartWidget/CartWidget'
 
-function NavBar({children}){
-    console.log (children)
+function NavBar(){
+    //console.log (children)
     return(
         < >
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
                 <Navbar.Brand href="#home">
-                    {/*  Aca va el logo de la marca pero no me lo toma
-                <img src='./marca.svg' width="50" height="30" className="d-inline-block align-top" />
-                */}
-                    PREMIUM PACK
+                    {/*  Aca va el logo de la marca pero no me lo toma */}
+                    <img src='../img/logo.jpeg' width="80" height="80" className="d-inline-block align-top" alt="PREMIUM PACK" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,13 +29,12 @@ function NavBar({children}){
                     <Nav>
                         <Nav.Link eventKey={2} href="#carrito">
                             <CartWidget/>
-                        
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-        { children }
+        {/* children */}
         </>
         
     )
