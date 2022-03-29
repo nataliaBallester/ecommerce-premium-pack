@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import ItemDetail from "../../components/ItemDetail/ItemDetail"
 import {  getFetchOne } from '../../helpers/getFetch'
+import ItemCount from '../ItemCount/ItemCount'
 
 function ItemDetailContainer() {
     const [producto, setProducto] = useState( {} )
@@ -29,6 +30,7 @@ return(
                     precio={prod.precio}
                     foto={prod.foto}
                   />
+                  <ItemCount/>
                 </div>
               );
             })//fin map
