@@ -1,4 +1,4 @@
-import { productos } from "../data/data"
+import { productos, producto } from "../data/data"
 
 export const getFetch = new Promise((resolve, reject)=>{
     //Acciones
@@ -10,3 +10,17 @@ export const getFetch = new Promise((resolve, reject)=>{
         reject('400 not found')
     }
 })
+
+export const getFetchOne = new Promise(( resolve, reject )=>{
+    
+    let condition=true
+    if (condition) {
+        setTimeout(()=>{ 
+            resolve(producto)
+         }, 3000)
+    } else {
+        reject('400 not found')
+        
+    }
+})
+
