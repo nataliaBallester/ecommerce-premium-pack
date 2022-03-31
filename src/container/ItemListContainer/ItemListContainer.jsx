@@ -1,14 +1,18 @@
 import React from "react"
-import ItemList from "../ItemList/ItemList"
+import ItemList from "../../components/ItemList/ItemList"
 
 function ItemListContainer({greeting,children}){
    //console.log(children)
+    //hook 
+    
 
     return(
         <div>
             {greeting}
             {children}
-            <ItemList />
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                <ItemList/>
+            </div>
         </div>
     )
 

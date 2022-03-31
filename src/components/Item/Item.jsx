@@ -1,20 +1,23 @@
+import { Link } from "react-router-dom";
 
-function Item({categoria, nombre, precio, id, stock, foto}){
+function Item({producto}){
 
 
   return (
-    <div key={id} className='col-md-4'>
+    <div className='col-md-4 p-1'>
         <div className="card w-100 mt-5">
             <div className="card-header">
-                {`${categoria} - ${nombre}` }
+                {`${producto.categoria} - ${producto.nombre}` }
             </div>
             <div className="card-body">
-                <img src={foto} alt='' className="w-50"/>
+                <img src={producto.foto} alt='' className="w-50"/>
                 <br/>
-                ${`${precio}`}
+                ${`${producto.precio}`}
             </div>
             <div className="card-footer">
-                    <button className="btn btn-outline-primary btn-block">Detalle del producto</button>
+              <Link to={`/detalle/${producto.id}`}>
+                <button className="btn btn-outline-primary btn-block">Detalle del producto</button>
+              </Link>
             </div>        
         </div>    
     </div>

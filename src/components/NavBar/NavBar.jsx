@@ -3,6 +3,7 @@ import  Container  from 'react-bootstrap/Container'
 import  Nav  from 'react-bootstrap/Nav'
 import  NavDropdown  from 'react-bootstrap/NavDropdown'
 import CartWidget from '../CartWidget/CartWidget'
+import { NavLink } from 'react-router-dom'
 
 function NavBar(){
     //console.log (children)
@@ -10,14 +11,16 @@ function NavBar(){
         < >
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand href="#home">
+                <NavLink to='/' >
                     {/*  Aca va el logo de la marca pero no me lo toma */}
                     <img src='../img/logo.jpeg' width="80" height="80" className="d-inline-block align-top" alt="PREMIUM PACK" />
-                </Navbar.Brand>
+                </NavLink>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#pricing">Platos</Nav.Link>
+                        <NavLink to="/categoria/vasos_lisos">Vasos Lisos</NavLink>
+                        <NavLink to="/categoria/vasos_corazon">Vasos Diseño</NavLink>
+                        {/*
                         <NavDropdown title="Vasos" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Linea Corazon</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Linea Cosmo</NavDropdown.Item>
@@ -25,11 +28,12 @@ function NavBar(){
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
+                        */}
                     </Nav>
                     <Nav>
-                        <Nav.Link eventKey={2} href="#carrito">
+                        <NavLink to='/cart'>
                             <CartWidget/>
-                        </Nav.Link>
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
