@@ -1,0 +1,5 @@
+{
+"productos": [
+    { "id": "1", "categoria":"Linea liso", "nombre": "lisos", "precio": "11", "stock": "10", "foto":"https://firebasestorage.googleapis.com/v0/b/premium-pack-86680.appspot.com/o/vasos%2Flinea_lisos%2Flisos.jpeg?alt=media&token=db76c203-0b98-49d9-8738-f1a2a87bbc3f"}
+]
+}
