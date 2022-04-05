@@ -1,5 +1,4 @@
 import ItemCount from "../ItemCount/ItemCount";
-import BotonesCart from "../BotonesCart/BotonesCart";
 
 //function ItemDetail({categoria, nombre, precio,  foto}){
 function ItemDetail({producto})
@@ -18,7 +17,6 @@ function ItemDetail({producto})
               </div>
               <div className="card-footer">
                   <ItemCount key={producto.id} inicia={1} stock={producto.stock} />
-                  <BotonesCart />
               </div>   
           </div>    
           </>
