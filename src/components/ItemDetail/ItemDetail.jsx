@@ -1,10 +1,13 @@
+import ItemCount from "../ItemCount/ItemCount";
+import BotonesCart from "../BotonesCart/BotonesCart";
 
 //function ItemDetail({categoria, nombre, precio,  foto}){
-    function ItemDetail({producto})
+function ItemDetail({producto})
 {
-
+    
     return (
-          <div className="card w-100 mt-5">
+        <>
+          <div className="card w-50 mt-5">
               <div className="card-header">
                   {`${producto.id} - ${producto.categoria} - ${producto.nombre}` }
               </div>
@@ -13,8 +16,12 @@
                   <br/>
                   ${`${producto.precio}`}
               </div>
+              <div className="card-footer">
+                  <ItemCount key={producto.id} inicia={1} stock={producto.stock} />
+                  <BotonesCart />
+              </div>   
           </div>    
-  
+          </>
     );
   
 }

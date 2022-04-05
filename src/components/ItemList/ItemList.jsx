@@ -34,7 +34,7 @@ function ItemList(){
   
       }
       else{ 
-        console.log ('undefine')
+        //console.log ('undefine')
         getFetch //funcion que simula el llamado a una api
         //.then(resp=>{
           //throw new Error ('Esto es un error') //Instancia un error
@@ -65,7 +65,7 @@ function ItemList(){
                 return (
                   <>
                     <Item key={producto.id} producto={producto}/>
-                    <ItemCount/>
+                    {/*<ItemCount/>*/}
                   </>
                 );
               })//fin map
