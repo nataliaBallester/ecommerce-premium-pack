@@ -21,9 +21,14 @@ function ItemDetailContainer() {
 
 return(
     <>
-    
-      <ItemDetail key={producto.id} producto = {producto}/>
-      <ItemCount/>
+    { 
+      loading ?  
+              <p>Cargando producto...</p>
+          :
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+              <ItemDetail key={producto.id} producto = {producto}/>
+            </div>
+    }
     </>
 )
 

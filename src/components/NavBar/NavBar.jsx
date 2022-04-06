@@ -20,15 +20,6 @@ function NavBar(){
                     <Nav className="me-auto">
                         <NavLink to="/categoria/vasos_lisos">Vasos Lisos</NavLink>
                         <NavLink to="/categoria/vasos_corazon">Vasos Diseño</NavLink>
-                        {/*
-                        <NavDropdown title="Vasos" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Linea Corazon</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Linea Cosmo</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Linea Kraft</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
-                        */}
                     </Nav>
                     <Nav>
                         <NavLink to='/cart'>

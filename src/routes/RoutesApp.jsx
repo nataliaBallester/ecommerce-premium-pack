@@ -11,7 +11,7 @@ function RoutesApp(){
         <BrowserRouter>
             <NavBar/>
             <Routes> 
-                <Route path='/' element={<ItemListContainer greeting='Hola soy ItemListContainer' titulo= {Titulo}/>}/>
+                <Route path='/' element={<ItemListContainer greeting='Hola soy ItemListContainer Ecommerce' titulo= {Titulo}/>}/>
                 <Route path='/detalle' element={<ItemDetailContainer/>}/>
             </Routes>
             <Routes> 

@@ -11,6 +11,7 @@ export const getFetch = new Promise((resolve, reject)=>{
     }
 })
 
+
 export const getFetchOne = new Promise(( resolve, reject )=>{
     
     let condition=true
