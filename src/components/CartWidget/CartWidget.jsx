@@ -1,9 +1,19 @@
+import { useCartContext } from "../../context/CartContext"
 
 function CartWidget(){
+
+    /*const destructuring de useContext que esta en la funcion useCartContext ==> esto me da una 
+        sola importacion
+    */
+    const {cartList, removeCart} = useCartContext()
+
+
     return(
-        <img src='..\img\carrito.png' 
-        width="50" height="30" className="d-inline-block align-top" />
-        //https://w7.pngwing.com/pngs/225/984/png-transparent-computer-icons-shopping-cart-encapsulated-postscript-shopping-cart-angle-black-shopping.png
+        <div>
+            <img src='..\img\carrito.png' width="50" height="30" className="d-inline-block align-top" />
+            {cartList.map(prod => <li key={prod.id}> nombre: {prod.nombre} - cantidad: {prod.cantidad} </li>)}
+            <button className="btn btn-outline-warning" onClick={removeCart}>Vaciar</button>
+        </div>
     )
 }
 

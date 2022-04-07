@@ -38,19 +38,17 @@ function ItemListContainer({greeting}){
     
     
     return(
-        <>
+        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
         {
             loading ? 
                 <div className="container">Cargando productos eccomers...</div> 
             : productos.map((producto)=>{
                 return (
-                    <>
-                        <ItemList key={producto.id} data={producto}/>
-                    </>
+                    <ItemList key={producto.id} data={producto}/>
                 );
                 })//fin map
         }
-        </>
+        </div>
     )
 
 }

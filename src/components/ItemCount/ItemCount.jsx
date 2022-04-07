@@ -2,25 +2,28 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-const ItemCount = ({inicia, stock}) => {
+const ItemCount = ({inicia, stock, onAdd}) => {
     //Inicializa el contador 1
     //const inicia = 1; 
     //const stop = 7; 
     const [open, setOpen ] = useState(false)
 
+    //hook de estado
+    const [cant, setCant] = useState(inicia);
+
     const haceClick = (num) => {
       setCant(cant + num);
     };
-
-    //hook de estado
-    const [cant, setCant] = useState(inicia);
     
     //function addAndOpen(item, counter, id)
-    function onAdd(cant)
+    function agregar(cant)
     {
-      console.log(cant)
-      alert(`Hiciste ${cant} Click/s`);
-      //addToCart(item, counter, id);
+      //console.log(cant)
+      //alert(`Hiciste ${cant} Click/s`);
+
+      //agrega al carrito
+      onAdd( cant)
+
       setOpen(true)
     }
     return(
@@ -34,7 +37,7 @@ const ItemCount = ({inicia, stock}) => {
         </button>{' '} 
         { !open ? ( 
         <span>
-            <button className="button-primary" onClick={() => onAdd(cant)} disabled={stock === 0 ? true : null}>
+            <button className="button-primary" onClick={() => agregar(cant)} disabled={stock === 0 ? true : null}>
                 Agregar
             </button>
         </span>
