@@ -6,13 +6,17 @@ function CartWidget(){
         sola importacion
     */
     const {cartList, removeCart} = useCartContext()
-
+    const {cantidad}= useCartContext()
 
     return(
         <div>
-            <img src='..\img\carrito.png' width="50" height="30" className="d-inline-block align-top" />
-            {cartList.map(prod => <li key={prod.id}> nombre: {prod.nombre} - cantidad: {prod.cantidad} </li>)}
-            <button className="btn btn-outline-warning" onClick={removeCart}>Vaciar</button>
+            {cantidad > 0 && 
+            <>
+                <img src='..\img\carrito.png' width="50" height="30" className="d-inline-block align-top" />
+                {cartList.map(prod => <li key={prod.id}> nombre: {prod.nombre} - cantidad: {prod.cantidad} </li>)}
+                <button className="btn btn-outline-warning" onClick={removeCart}>Vaciar</button>
+            </>
+            }
         </div>
     )
 }

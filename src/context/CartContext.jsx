@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext([]);
 
@@ -7,6 +7,20 @@ export const useCartContext= ()=> useContext(CartContext)
 function CartContextProvider({children})
 {
     const [cartList, setCartList] = useState([])
+    const [cantidad, setCantidad] = useState(0)
+    const [total, setTotal] = useState()
+
+    useEffect(()=> {
+        let tot = 0
+
+        const totales = cartList.map (p => p.precio * p.cantidad)
+        totales.map(p => tot = tot + p)
+        setTotal(tot)
+
+        const cartCantidad = cartList.length
+        setCantidad(cartCantidad) 
+    },[cartList]
+    )
 
     // Función para ver si el producto está en el carrito
     function isInCart(id){
@@ -22,6 +36,12 @@ function CartContextProvider({children})
     const addToCart = (item)=>{
 
         if (isInCart(item.id)){
+            const productAnt = cartList.find(p => p.id === item.id)
+            //console.log (item.cantidad)
+            const addcant = productAnt.cantidad + item.cantidad
+            
+            console.log (productAnt.cantidad)
+            alert(addcant)
 
         }
         else
@@ -40,6 +60,7 @@ function CartContextProvider({children})
     return(
         <CartContext.Provider value={{
             cartList,
+            cantidad,
             addToCart,
             removeCart
         }}>

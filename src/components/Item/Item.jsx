@@ -19,7 +19,6 @@ function Item({producto}){
               <Link to={`/detalle/${producto.id}`}>
                 <button className="btn btn-outline-secondary btn-block">Detalle del producto</button>
               </Link>
-              {/*<ItemCount/>*/}
             </div>        
         </div>    
     </div>

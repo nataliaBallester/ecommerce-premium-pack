@@ -28,15 +28,15 @@ const ItemCount = ({inicia, stock, onAdd}) => {
     }
     return(
       <div className="count-container mt-2">
-        <button className="count-container__button" onClick={() => haceClick(-1)} 
-            disabled={cant === inicia ? true : null}> -
-        </button>{' '}
-        <span className="count-container__qty">  {cant}  </span>
-        <button className="count-container__button" onClick={() => haceClick(+1)}
-          disabled={cant === stock ? true : null} > + 
-        </button>{' '} 
-        { !open ? ( 
+      { !open ? (
         <span>
+            <button className="count-container__button" onClick={() => haceClick(-1)} 
+              disabled={cant === inicia ? true : null}> -
+            </button>{' '}
+            <span className="count-container__qty">  {cant}  </span>
+            <button className="count-container__button" onClick={() => haceClick(+1)}
+              disabled={cant === stock ? true : null} > + 
+            </button>{' '}
             <button className="button-primary" onClick={() => agregar(cant)} disabled={stock === 0 ? true : null}>
                 Agregar
             </button>
@@ -45,16 +45,14 @@ const ItemCount = ({inicia, stock, onAdd}) => {
         (
           <>
             <Link to='/cart' >
-                <button 
-                    className="button-primary" 
-                    onClick={()=>console.log('ir a cart') } 
-                >Terminar compra</button> 
-            </Link>  
+                <button className="button-primary" onClick={()=>console.log('') }> 
+                  Terminar compra
+                </button>
+            </Link>{' '}   
             <Link to='/'>
-                <button 
-                    className="button-primary" 
-                    onClick={()=>console.log('ir al home') } 
-                >Seguir comprando</button>
+                <button className="button-primary" onClick={()=>console.log('ir al home') }>
+                  Seguir comprando
+                </button>
             </Link>
           </>
         )
