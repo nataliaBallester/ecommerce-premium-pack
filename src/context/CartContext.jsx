@@ -33,6 +33,14 @@ function CartContextProvider({children})
         }
     }
 
+    const precioTotal=()=>{
+        return cartList.reduce((acum, item)=> acum + (item.cantidad * item.precio), 0)
+    }
+
+    const cantTotalItems=()=>{
+        return cartList.reduce((acum, item)=> acum += item.cantidad,0)
+    }
+
     const addToCart = (item)=>{
 
         if (isInCart(item.id)){
@@ -57,15 +65,44 @@ function CartContextProvider({children})
         setCartList([])
     }
 
+    const deleteItem= (id)=>{
+        setCartList( cartList.filter(prod => prod.id !== id))
+    }
+
     return(
         <CartContext.Provider value={{
             cartList,
             cantidad,
             addToCart,
-            removeCart
+            removeCart,
+            precioTotal,
+            deleteItem,
+            cantTotalItems
         }}>
             {children}
         </CartContext.Provider>
     )
 }
 export default CartContextProvider 
+
+/*
+  const addToCart = (item) => {
+        const idx = cartList.findIndex(prod => item.id === prod.id);   // 0 -> 
+        console.log(idx)
+        console.log(item)
+        if (idx !== -1 ) {
+            // la lógica
+            const newArray = cartList
+            const newCant = cartList[idx].cantidad + item.cantidad
+            newArray[idx].cantidad = newCant
+            setCartList( [...newArray] )
+        } else {
+            setCartList([
+                ...cartList,
+                item
+            ])            
+        }
+
+    }
+
+  */

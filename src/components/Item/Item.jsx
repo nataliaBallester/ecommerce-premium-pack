@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
+
 
 function Item({producto}){
-
 
   return (
     <div className='col-md-4 p-1'>

@@ -12,6 +12,7 @@ function ItemDetail({producto})
         addToCart({...producto, cantidad: cant})
 //        addToCart({item:{...producto}, quantity: cant})
 
+
     }
 
     return (
@@ -34,4 +35,6 @@ function ItemDetail({producto})
   
 }
   export default ItemDetail;
+  
+
   

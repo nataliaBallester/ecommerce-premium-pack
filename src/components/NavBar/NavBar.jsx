@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom'
 
 function NavBar(){
     //console.log (children)
+
     return(
         < >
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">

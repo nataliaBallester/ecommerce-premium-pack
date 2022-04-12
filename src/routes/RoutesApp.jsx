@@ -3,6 +3,7 @@ import NavBar from '../components//NavBar/NavBar'
 import Titulo from '../components/Titulo/Titulo'
 import ItemListContainer from '../container/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from '../container/ItemDetailContainer/ItemDetailContainer'
+import Cart from '../components/Cart/Cart'
 
 
 function RoutesApp(){
@@ -18,7 +19,10 @@ function RoutesApp(){
                 <Route path='/categoria/:categoriaId' element={<ItemListContainer greeting='Hola soy ItemListContainer' titulo= {Titulo}/>}/>
                 <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>}/>
             </Routes>
-            
+            <Routes> 
+                <Route path="/cart" element={<Cart />} />
+            </Routes>
+
       </BrowserRouter>
   )
     
