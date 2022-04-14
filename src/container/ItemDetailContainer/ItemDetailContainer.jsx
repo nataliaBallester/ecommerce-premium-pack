@@ -1,32 +1,39 @@
 import React from "react"
 import {useEffect, useState} from 'react'
-import ItemDetail from "../../components/ItemDetail/ItemDetail"
-import {  getFetch, getFetchOne } from '../../helpers/getFetch'
-import ItemCount from '../../components/ItemCount/ItemCount'
 import { useParams } from "react-router-dom"
+import {doc,getDoc, getFirestore} from 'firebase/firestore'
+import ItemDetail from "../../components/ItemDetail/ItemDetail"
+//import {  getFetch, getFetchOne } from '../../helpers/getFetch'
+//import ItemCount from '../../components/ItemCount/ItemCount'
+
+
 
 function ItemDetailContainer() {
-    const [producto, setProducto] = useState( {} )
+    const [product, setProduct] = useState( {} )
     const [loading, setLoading]= useState(true)
 
-    const {detalleId} = useParams()
-    
-  useEffect(()=> {
-       
-    getFetch
-    .then(resp => setProducto(resp.find(prod => prod.id=== detalleId)) )
-    .catch(err => console.log(err))
-    .finally(() => setLoading(false))
-}, [])
+    const {prodId} = useParams()
 
+    useEffect(()=>{
+      const querydb = getFirestore()
+      const queryProd = doc(querydb, 'products', prodId)
+    
+      getDoc (queryProd)
+      //.then(resp=> setProduct({id: resp.id, ...resp.data()}))
+      .then(resp=> setProduct(resp.find(prod => prod.id === prodId)))
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+    }, [])
+    
+ 
 return(
     <>
     { 
       loading ?  
-              <p>Cargando producto...</p>
+            <p>Cargando producto...</p>
           :
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-              <ItemDetail key={producto.id} producto = {producto}/>
+              <ItemDetail key={product.id} product = {product}/>
             </div>
     }
     </>

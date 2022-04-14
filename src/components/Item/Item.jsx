@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
 
 
-function Item({producto}){
+function Item({product}){
 
+  console.log("item")
+  console.log(product)
   return (
     <div className='col-md-4 p-1'>
         <div className="card w-75 mt-5">
             <div className="card-header">
-                {`${producto.categoria} - ${producto.nombre}` }
+                {`${product.category} - ${product.name}` }
             </div>
             <div className="card-body">
-                <img src={producto.foto} alt='' className="w-50"/>
+                <img src={product.image} alt='' className="w-50"/>
                 <br/>
-                ${`${producto.precio}`}
+                ${`${product.price}`}
             </div>
             <div className="card-footer">
-              <Link to={`/detalle/${producto.id}`}>
+              <Link to={`/detail/${product.id}`}>
                 <button className="btn btn-outline-secondary btn-block">Detalle del producto</button>
               </Link>
             </div>        

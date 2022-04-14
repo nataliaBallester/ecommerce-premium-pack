@@ -9,7 +9,7 @@ function Cart()
         <div>
             {cantidad > 0 && 
             <>
-                {cartList.map(prod => <li key={prod.id}> nombre: {prod.nombre} - cantidad: {prod.cantidad} </li>)}
+                {cartList.map(prod => <li key={prod.id}> nombre: {prod.nombre} - cantidad: {prod.cantidad} - precio: {prod.precio} </li>)}
                 <br/>
                 {precioTotal() !== 0 && <label>El precio total es: ${precioTotal() } </label>}
                 <br/>

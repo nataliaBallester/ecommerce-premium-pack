@@ -3,13 +3,13 @@ import { useCartContext } from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 
 //function ItemDetail({categoria, nombre, precio,  foto}){
-function ItemDetail({producto})
+function ItemDetail({product})
 {
     const {addToCart, cartList} = useCartContext()
 
-    function onAdd(cant){
+    function onAdd(qnt){
         //console.log (cant)
-        addToCart({...producto, cantidad: cant})
+        addToCart({...product, quantity: qnt})
 //        addToCart({item:{...producto}, quantity: cant})
 
 
@@ -19,15 +19,15 @@ function ItemDetail({producto})
         <>
           <div className="card w-50 mt-5">
               <div className="card-header">
-                  {`${producto.id} - ${producto.categoria} - ${producto.nombre}` }
+                  {`${product.id} - ${product.category} - ${product.name}` }
               </div>
               <div className="card-body">
-                  <img src={producto.foto} alt='' className="w-50"/>
+                  <img src={product.image} alt='' className="w-50"/>
                   <br/>
-                  ${`${producto.precio}`}
+                  ${`${product.price}`}
               </div>
               <div className="card-footer">
-                  <ItemCount key={producto.id} inicia={1} stock={producto.stock} onAdd={onAdd} />
+                  <ItemCount key={product.id} inicia={1} stock={product.stocck} onAdd={onAdd} />
               </div>   
           </div>    
           </>

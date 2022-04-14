@@ -1,50 +1,42 @@
 import React from "react"
 import {useEffect, useState} from 'react'
-import ItemList from "../../components/ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import { getFetch } from "../../helpers/getFetch"
+import {collection, getDocs, getFirestore,query, where} from 'firebase/firestore'
+import ItemList from "../../components/ItemList/ItemList"
+
+//import { getFetch } from "../../helpers/getFetch"
+
 
 function ItemListContainer({greeting}){
-    const [productos, setProductos]= useState([])
+    const [products, setProducts]= useState([])
     const [loading, setLoading]= useState(true)
 
-    const {categoriaId}= useParams()
+    const {categoryId}= useParams()
 
+    //traemos todos los productos de firestore
     useEffect(()=>{
-        if(categoriaId){
-          console.log ('existe')
-  
-          //setTimeout(()=> {
-          getFetch //funcion que simula el llamado a una api
-          .then(resp=> setProductos(resp.filter(item => item.categoria=== categoriaId ) )) 
-          .catch((err)=> console.log(err)) //Catch captura todos los errores, los de la promesa y los de la aplicacion
-          
-          .finally(()=> setLoading(false)) //se ejecuta siempre y al ultimo despues de ejecutar todos los then
-          //},3000)
-    
-        }
-        else{ 
-          //console.log ('undefine')
-          getFetch //funcion que simula el llamado a una api
-          .then(resp=> setProductos(resp)) 
-          .catch((err)=> console.log(err)) //Catch captura todos los errores, los de la promesa y los de la aplicacion
-          
-          .finally(()=> setLoading(false)) //se ejecuta siempre y al ultimo despues de ejecutar todos los then
-          //},3000)
-  
-        }
-        
-      },[categoriaId])
-    
-    
+      const querydb = getFirestore()
+      const queryCollection = collection(querydb,'products')
+      const queryFilter = categoryId ?
+                              query(queryCollection, where('category', '==', categoryId))
+                            : 
+                              queryCollection
+
+      getDocs(queryFilter)
+      .then(resp=> setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}))))
+      .catch((err)=> console.log(err)) //Catch captura todos los errores, los de la promesa y los de la aplicacion
+      .finally(()=> setLoading(false)) //se ejecuta siempre y al ultimo despues de ejecutar todos los then
+
+    }, [categoryId])
+
     return(
         <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
         {
             loading ? 
                 <div className="container">Cargando productos eccomers...</div> 
-            : productos.map((producto)=>{
+            : products.map((prod)=>{
                 return (
-                    <ItemList key={producto.id} data={producto}/>
+                    <ItemList key={prod.id} data={prod}/>
                 );
                 })//fin map
         }
