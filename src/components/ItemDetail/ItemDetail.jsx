@@ -9,9 +9,8 @@ function ItemDetail({product})
 
     function onAdd(qnt){
         //console.log (cant)
-        addToCart({...product, quantity: qnt})
-//        addToCart({item:{...producto}, quantity: cant})
-
+//        addToCart({...product, quantity: qnt})
+        addToCart({item:{...product}, quantity: qnt})
 
     }
 

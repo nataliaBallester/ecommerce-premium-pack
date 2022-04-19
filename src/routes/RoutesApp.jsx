@@ -13,14 +13,15 @@ function RoutesApp(){
             <NavBar/>
             <Routes> 
                 <Route path='/' element={<ItemListContainer greeting='Hola soy ItemListContainer Ecommerce' titulo= {Titulo}/>}/>
-                <Route path='/detalle' element={<ItemDetailContainer/>}/>
             </Routes>
             <Routes> 
-                <Route path='/categoria/:categoriaId' element={<ItemListContainer greeting='Hola soy ItemListContainer' titulo= {Titulo}/>}/>
-                <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>}/>
+                <Route path='/detail/:detalleId' element={<ItemDetailContainer/>}/>
             </Routes>
             <Routes> 
-                <Route path="/cart" element={<Cart />} />
+                <Route path='/category/:categoryId' element={<ItemListContainer greeting='Hola soy ItemListContainer' titulo= {Titulo}/>}/>
+             </Routes>
+            <Routes> 
+                <Route path='/cart' element={<Cart />} />
             </Routes>
 
       </BrowserRouter>

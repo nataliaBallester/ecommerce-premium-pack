@@ -3,13 +3,13 @@ import { useCartContext } from "../../context/CartContext"
 function Cart()
 {
     const {cartList, removeCart, precioTotal} = useCartContext()
-    const {cantidad}= useCartContext()
-    
+    const {quantity}= useCartContext()
+
     return(
         <div>
-            {cantidad > 0 && 
+            {quantity > 0 && 
             <>
-                {cartList.map(prod => <li key={prod.id}> nombre: {prod.nombre} - cantidad: {prod.cantidad} - precio: {prod.precio} </li>)}
+                {cartList.map(prod => <li key={prod.id}> nombre: {prod.name} - cantidad: {prod.quantity} - precio: {prod.price} </li>)}
                 <br/>
                 {precioTotal() !== 0 && <label>El precio total es: ${precioTotal() } </label>}
                 <br/>

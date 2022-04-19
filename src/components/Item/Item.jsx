@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 function Item({product}){
 
-  console.log("item")
-  console.log(product)
   return (
     <div className='col-md-4 p-1'>
         <div className="card w-75 mt-5">

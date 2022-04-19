@@ -7,24 +7,26 @@ export const useCartContext= ()=> useContext(CartContext)
 function CartContextProvider({children})
 {
     const [cartList, setCartList] = useState([])
-    const [cantidad, setCantidad] = useState(0)
+    const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState()
 
     useEffect(()=> {
         let tot = 0
 
-        const totales = cartList.map (p => p.precio * p.cantidad)
+        const totales = cartList.map (p => p.precio * p.quantity)
         totales.map(p => tot = tot + p)
         setTotal(tot)
 
         const cartCantidad = cartList.length
-        setCantidad(cartCantidad) 
+        setQuantity(cartCantidad) 
     },[cartList]
     )
 
     // Función para ver si el producto está en el carrito
     function isInCart(id){
         const item = cartList.find(p => p.id === id)
+        //const item = cartList.findIndex(prod => prod.id === id);
+
         if (item === undefined){
             return false
         }
@@ -34,21 +36,23 @@ function CartContextProvider({children})
     }
 
     const precioTotal=()=>{
-        return cartList.reduce((acum, item)=> acum + (item.cantidad * item.precio), 0)
+        return cartList.reduce((acum, item)=> acum + (item.quantity * item.price), 0)
     }
 
     const cantTotalItems=()=>{
-        return cartList.reduce((acum, item)=> acum += item.cantidad,0)
+        return cartList.reduce((acum, item)=> acum += item.quantity,0)
     }
 
     const addToCart = (item)=>{
+        console.log ("addToCart")
+        console.log(item)
 
         if (isInCart(item.id)){
             const productAnt = cartList.find(p => p.id === item.id)
             //console.log (item.cantidad)
-            const addcant = productAnt.cantidad + item.cantidad
+            const addcant = productAnt.quantity + item.quantity
             
-            console.log (productAnt.cantidad)
+            console.log (productAnt.quantity)
             alert(addcant)
 
         }
@@ -72,7 +76,7 @@ function CartContextProvider({children})
     return(
         <CartContext.Provider value={{
             cartList,
-            cantidad,
+            quantity,
             addToCart,
             removeCart,
             precioTotal,

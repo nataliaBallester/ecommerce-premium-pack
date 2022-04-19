@@ -19,8 +19,8 @@ function NavBar(){
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to="/categoria/vasos lisos">Vasos Lisos</NavLink>
-                        <NavLink to="/categoria/vasos corazon">Vasos Diseño</NavLink>
+                        <NavLink to="/category/vasos lisos">Vasos Lisos</NavLink>
+                        <NavLink to="/category/vasos corazon">Vasos Diseño</NavLink>
                     </Nav>
                     <Nav>
                         <NavLink to='/cart'>

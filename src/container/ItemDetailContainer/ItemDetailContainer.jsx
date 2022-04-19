@@ -12,15 +12,17 @@ function ItemDetailContainer() {
     const [product, setProduct] = useState( {} )
     const [loading, setLoading]= useState(true)
 
-    const {prodId} = useParams()
+    const {detalleId} = useParams()
+
+    console.log(detalleId)
 
     useEffect(()=>{
       const querydb = getFirestore()
-      const queryProd = doc(querydb, 'products', prodId)
+      const queryProd = doc(querydb, 'products', detalleId)
     
       getDoc (queryProd)
       //.then(resp=> setProduct({id: resp.id, ...resp.data()}))
-      .then(resp=> setProduct(resp.find(prod => prod.id === prodId)))
+      .then((resp)=> setProduct({id:resp.id, ...resp.data()}))
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
     }, [])
