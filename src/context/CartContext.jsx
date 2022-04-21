@@ -10,6 +10,9 @@ function CartContextProvider({children})
     const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState()
 
+    console.log("quantity cartcontext")
+    console.log(quantity)
+
     useEffect(()=> {
         let tot = 0
 
@@ -26,11 +29,11 @@ function CartContextProvider({children})
     function isInCart(id){
         const item = cartList.find(p => p.id === id)
         //const item = cartList.findIndex(prod => prod.id === id);
-
         if (item === undefined){
             return false
         }
         else {
+
             return true
         }
     }
@@ -44,16 +47,28 @@ function CartContextProvider({children})
     }
 
     const addToCart = (item)=>{
-        console.log ("addToCart")
-        console.log(item)
 
         if (isInCart(item.id)){
-            const productAnt = cartList.find(p => p.id === item.id)
-            //console.log (item.cantidad)
-            const addcant = productAnt.quantity + item.quantity
+            const productOld = cartList.find(p => p.id === item.id)
             
-            console.log (productAnt.quantity)
-            alert(addcant)
+            const newQuantity = productOld.quantity + item.quantity
+
+            const newProduct = {id: productOld.id, category: productOld.category, name: productOld.name
+                                , price: productOld.price, image: productOld.image, quantity: newQuantity}
+
+            const cartListOld = cartList.filter(product => product.id =! productOld.id)
+            // Agrego el nuevo producto
+            //const cartListNew = [...cartListOld, newProduct]
+            // Guardo en el estado el nuevo listado
+           // setCartList(cartListNew)      
+           setCartList([
+                ...cartListOld, 
+                newProduct])      
+            
+            
+//            setCartList( cartList.filter(prod => prod.id !== id))
+            //console.log (productAnt.quantity)
+            //alert(addcant)
 
         }
         else

@@ -2,15 +2,13 @@
 import { useCartContext } from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 
-//function ItemDetail({categoria, nombre, precio,  foto}){
 function ItemDetail({product})
 {
     const {addToCart, cartList} = useCartContext()
 
     function onAdd(qnt){
         //console.log (cant)
-//        addToCart({...product, quantity: qnt})
-        addToCart({item:{...product}, quantity: qnt})
+        addToCart({...product, quantity: qnt})
 
     }
 

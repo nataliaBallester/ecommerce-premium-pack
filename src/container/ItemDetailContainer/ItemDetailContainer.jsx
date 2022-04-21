@@ -14,8 +14,6 @@ function ItemDetailContainer() {
 
     const {detalleId} = useParams()
 
-    console.log(detalleId)
-
     useEffect(()=>{
       const querydb = getFirestore()
       const queryProd = doc(querydb, 'products', detalleId)

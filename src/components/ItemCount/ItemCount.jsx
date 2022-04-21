@@ -23,7 +23,7 @@ const ItemCount = ({inicia, stock, onAdd}) => {
 
       //agrega al carrito
       onAdd( cant)
-
+      
       setOpen(true)
     }
     return(
