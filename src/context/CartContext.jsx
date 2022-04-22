@@ -49,27 +49,13 @@ function CartContextProvider({children})
     const addToCart = (item)=>{
 
         if (isInCart(item.id)){
-            const productOld = cartList.find(p => p.id === item.id)
-            
-            const newQuantity = productOld.quantity + item.quantity
+            const idx = cartList.findIndex(prod => item.id === prod.id);
+            const newCartList = cartList
 
-            const newProduct = {id: productOld.id, category: productOld.category, name: productOld.name
-                                , price: productOld.price, image: productOld.image, quantity: newQuantity}
+            const newQuantity = cartList[idx].quantity + item.quantity
+            newCartList[idx].quantity = newQuantity
 
-            const cartListOld = cartList.filter(product => product.id =! productOld.id)
-            // Agrego el nuevo producto
-            //const cartListNew = [...cartListOld, newProduct]
-            // Guardo en el estado el nuevo listado
-           // setCartList(cartListNew)      
-           setCartList([
-                ...cartListOld, 
-                newProduct])      
-            
-            
-//            setCartList( cartList.filter(prod => prod.id !== id))
-            //console.log (productAnt.quantity)
-            //alert(addcant)
-
+            setCartList( [...newCartList] )
         }
         else
         {
@@ -104,24 +90,3 @@ function CartContextProvider({children})
 }
 export default CartContextProvider 
 
-/*
-  const addToCart = (item) => {
-        const idx = cartList.findIndex(prod => item.id === prod.id);   // 0 -> 
-        console.log(idx)
-        console.log(item)
-        if (idx !== -1 ) {
-            // la lógica
-            const newArray = cartList
-            const newCant = cartList[idx].cantidad + item.cantidad
-            newArray[idx].cantidad = newCant
-            setCartList( [...newArray] )
-        } else {
-            setCartList([
-                ...cartList,
-                item
-            ])            
-        }
-
-    }
-
-  */
