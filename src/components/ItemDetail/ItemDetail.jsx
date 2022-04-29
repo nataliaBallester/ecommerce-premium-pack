@@ -4,7 +4,8 @@ import ItemCount from "../ItemCount/ItemCount";
 
 function ItemDetail({product})
 {
-    const {addToCart, cartList} = useCartContext()
+    //const {addToCart, cartList} = useCartContext()
+    const{addToCart}=useCartContext()
 
     function onAdd(qnt){
         //console.log (cant)
@@ -24,7 +25,7 @@ function ItemDetail({product})
                   ${`${product.price}`}
               </div>
               <div className="card-footer">
-                  <ItemCount key={product.id} inicia={1} stock={product.stocck} onAdd={onAdd} />
+                  <ItemCount key={product.id} inicia={1} stock={product.stock} onAdd={onAdd} />
               </div>   
           </div>    
           </>

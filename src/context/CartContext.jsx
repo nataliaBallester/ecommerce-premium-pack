@@ -16,8 +16,9 @@ function CartContextProvider({children})
     useEffect(()=> {
         let tot = 0
 
-        const totales = cartList.map (p => p.precio * p.quantity)
-        totales.map(p => tot = tot + p)
+        const totals = cartList.map (p => p.precio * p.quantity)
+        //totales
+        totals.map(p => tot = tot + p)
         setTotal(tot)
 
         const cartCantidad = cartList.length
@@ -38,11 +39,11 @@ function CartContextProvider({children})
         }
     }
 
-    const precioTotal=()=>{
+    const totalPrice=()=>{
         return cartList.reduce((acum, item)=> acum + (item.quantity * item.price), 0)
     }
 
-    const cantTotalItems=()=>{
+    const totalQuanItems=()=>{
         return cartList.reduce((acum, item)=> acum += item.quantity,0)
     }
 
@@ -71,6 +72,7 @@ function CartContextProvider({children})
     }
 
     const deleteItem= (id)=>{
+        //uso filter para que traiga todos los productos <> al id que le paso
         setCartList( cartList.filter(prod => prod.id !== id))
     }
 
@@ -80,9 +82,9 @@ function CartContextProvider({children})
             quantity,
             addToCart,
             removeCart,
-            precioTotal,
+            totalPrice,
             deleteItem,
-            cantTotalItems
+            totalQuanItems
         }}>
             {children}
         </CartContext.Provider>

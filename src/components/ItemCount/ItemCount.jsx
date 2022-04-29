@@ -18,14 +18,11 @@ const ItemCount = ({inicia, stock, onAdd}) => {
     //function addAndOpen(item, counter, id)
     function agregar(cant)
     {
-      //console.log(cant)
-      //alert(`Hiciste ${cant} Click/s`);
-
       //agrega al carrito
       onAdd( cant)
-      
       setOpen(true)
     }
+
     return(
       <div className="count-container mt-2">
       { !open ? (
@@ -37,6 +34,7 @@ const ItemCount = ({inicia, stock, onAdd}) => {
             <button className="count-container__button" onClick={() => haceClick(+1)}
               disabled={cant === stock ? true : null} > + 
             </button>{' '}
+            <span className="count-container__qty"> {stock} </span> 
             <button className="button-primary" onClick={() => agregar(cant)} disabled={stock === 0 ? true : null}>
                 Agregar
             </button>
