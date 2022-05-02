@@ -10,6 +10,7 @@ import ItemDetail from "../../components/ItemDetail/ItemDetail"
 
 function ItemDetailContainer() {
     const [product, setProduct] = useState( {} )
+    
     const [loading, setLoading]= useState(true)
 
     const {detalleId} = useParams()

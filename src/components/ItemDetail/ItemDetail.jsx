@@ -28,7 +28,7 @@ function ItemDetail({product})
                   <ItemCount key={product.id} inicia={1} stock={product.stock} onAdd={onAdd} />
               </div>   
           </div>    
-          </>
+        </>
     );
   
 }
