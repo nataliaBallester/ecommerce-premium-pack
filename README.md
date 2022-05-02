@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Librerias publicas
+"react-bootstrap": "^2.2.3" : utilizada para la interfaz de usuario
+
+"react-dom": proporciona metodos especificos del DOM
+
+"firebase": es un conjunto de herramientas y una de ellas nos proporciona la posibilidad de almacenar la informacion.
+
+
+
+
+
