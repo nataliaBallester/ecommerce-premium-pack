@@ -43,12 +43,12 @@ const ItemCount = ({inicia, stock, onAdd}) => {
         (
           <>
             <Link to='/cart' >
-                <button className="button-primary" onClick={()=>console.log('') }> 
+                <button className="button-primary"> 
                   Terminar compra
                 </button>
             </Link>{' '}   
             <Link to='/'>
-                <button className="button-primary" onClick={()=>console.log('ir al home') }>
+                <button className="button-primary"> 
                   Seguir comprando
                 </button>
             </Link>

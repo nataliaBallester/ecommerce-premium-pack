@@ -10,9 +10,7 @@ function CartContextProvider({children})
     const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState()
 
-    console.log("quantity cartcontext")
-    console.log(quantity)
-
+  
     useEffect(()=> {
         let tot = 0
 

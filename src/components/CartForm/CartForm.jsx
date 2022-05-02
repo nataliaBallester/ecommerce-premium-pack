@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useCartContext } from "../../context/CartContext"
 import { addDoc,collection, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from "firebase/firestore"
 
@@ -16,6 +16,47 @@ function CartForm(){
 
         }
     )
+
+    const [disable, setDisabled] = useState(true)
+    const [nameError, setNameError] = useState('')
+
+    const [idOrder, setIdOrder] =  useState(0)
+    const [loading, setLoading]= useState(true)
+
+     
+    // validacion y deshabilita botton generar orden
+    useEffect(() => {
+
+        //habilita o deshabilita el boton segun validacion del formulario
+        setDisabled(formValidation())
+    
+    }, [formData, setFormData]) 
+
+  
+    // here we run any validation, returning true/false
+  const formValidation = () => {
+    if (formData.name === "") {
+      setNameError('Nombre no puede estar vacio.!')
+      return true
+    } 
+    else if (formData.phone === ""){
+        setNameError('Telefono no puede estar vacio.!')
+        return true
+    }
+    else if(formData.email === ""){
+        setNameError('Email no puede estar vacio.!')
+        return true 
+    }
+    else if (formData.emailr != formData.email){
+        setNameError('Las direcciones de email deben ser iguales')
+        return true
+    }
+    else{
+        setNameError(null)
+        return false
+    }
+    
+  }
 
     const handleChange=(event)=>{
         setFormData({
@@ -50,9 +91,12 @@ function CartForm(){
 
         await addDoc(queryCollection, order)
         
-        .then(({id})=>console.log(id))
+        //.then(({id})=>console.log(id))
+        .then((resp)=> setIdOrder(resp.id))
         .catch((err)=> console.log(err)) //Catch captura todos los errores, los de la promesa y los de la aplicacion
-        .finally(removeCart())
+        //.finally(removeCart())
+        //.finally(() => setLoading(false))
+        .finally()
 
         //update de un documento de una colleccion
         /*
@@ -74,15 +118,24 @@ function CartForm(){
         .then (resp => resp.docs.forEach(res => batch.update(res.ref,{
             stock: res.data().stock - cartList.find(item => item.id === res.id).quantity
         })))
-//        .catch((err)=> console.log(err)) //Catch captura todos los errores, los de la promesa y los de la aplicacion
-        .finally(()=> console.log('actualizado'))
+        .catch((err)=> console.log(err)) 
+        .finally(() => setLoading(false))
+        
         batch.commit()
 
     }
 
+    const deleteCart = async (e)=>{
+        e.preventDefault()
+
+        removeCart()
+    }
+
     return(
         <>
-            <form onSubmit={createOrder}>
+        { 
+          loading ?
+            <form onSubmit={createOrder} autoComplete="off">
                 <input name='name' type='text' placeholder="Ingrese su nombre" 
                     onChange={handleChange} 
                     value={formData.name}
@@ -99,9 +152,16 @@ function CartForm(){
                     onChange={handleChange} 
                     value={formData.emailr}
                 />
+                { nameError && <p>{nameError}</p> }
                 <br/><br/>
-                <button className="btn btn-outline-warning">Generar Orden</button>
+                <button className="btn btn-outline-warning" disabled={disable}>Generar Orden</button>
             </form>
+            :
+                <>
+                <p>Tú número de orden es: {idOrder}</p> 
+                <button className="btn btn-outline-warning" onClick={deleteCart}> OK </button>
+                </>
+        }
         </>
     )
 }
