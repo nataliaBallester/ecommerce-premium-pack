@@ -30,7 +30,7 @@ function CartForm(){
         //habilita o deshabilita el boton segun validacion del formulario
         setDisabled(formValidation())
     
-    }, [setFormData]) //[formData, setFormData]) 
+    }, [formData,setFormData]) //[formData, setFormData]) 
 
   
     // here we run any validation, returning true/false
