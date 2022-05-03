@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useCartContext } from "../../context/CartContext"
-import { addDoc,collection, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from "firebase/firestore"
+import { addDoc,collection, documentId, getDocs, getFirestore, query, where, writeBatch } from "firebase/firestore"
 
 
 function CartForm(){
@@ -30,7 +30,7 @@ function CartForm(){
         //habilita o deshabilita el boton segun validacion del formulario
         setDisabled(formValidation())
     
-    }, [formData, setFormData]) 
+    }, [setFormData]) //[formData, setFormData]) 
 
   
     // here we run any validation, returning true/false
